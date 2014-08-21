@@ -3,6 +3,17 @@ namespace :deploy do
     invoke "laravel:artisan", "optimize"
   end
 
+  task :migrate do
+    invoke "laravel:artisan", "migrate"
+  end
+
+  after :updated, 'deploy:set_permissions:acl' do
+    arr = fetch(:file_permissions_paths)
+    laravel_path = fetch(:laravel_path)
+    set :file_permissions_paths, arr.map { |a| laravel_path + a }
+    invoke "deploy:set_permissions:acl"
+  end
+
+  after :updated, "deploy:migrate"
   after :updated, "deploy:optimize"
-  after :updated, 'deploy:set_permissions:acl'
 end
