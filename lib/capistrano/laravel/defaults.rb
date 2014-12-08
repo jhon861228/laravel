@@ -14,8 +14,7 @@ set :file_permissions_paths, [
   'app/storage/logs',
   'app/storage/meta',
   'app/storage/sessions',
-  'app/storage/views',
-  'app/storage/clockwork'
+  'app/storage/views'
 ]
 set :file_permissions_users, [fetch(:laravel_server_user)]
 set :file_permissions_group, [fetch(:laravel_server_group)]
