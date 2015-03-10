@@ -33,8 +33,11 @@ The gem makes the following configuration variables available (shown with defaul
 
 ```ruby
 set :laravel_roles, :all
-set :laravel_artisan_flags, "--env=production"
+set :laravel_path, "laravel/" # Default is set to ./
+set :laravel_artisan_flags, "--env=production --force"
 set :laravel_server_user, "www-data"
+set :laravel_server_group, "www-data"
+set :laravel_server_chmod_mode, "0777"
 ```
 
 ## Contributing
